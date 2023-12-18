@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My projects</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f4f4;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      h1 {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        color: #07314d;
+        text-align: center;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        padding: 20px;
+        z-index: 1000;
+        width: 100%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1:hover {
+        color: red;
+        transition: color 0.3s ease;
+      }
+
+      .center-circle {
+        width: 450px;
+        height: 450px;
+        border: 5px solid #3498db;
+        border-radius: 50%;
+        position: absolute;
+        box-sizing: content-box;
+        animation: changeBorderColor 3s infinite;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      @keyframes changeBorderColor {
+        0% {
+          border-color: #3498db;
+        }
+        10% {
+          border-color: #e74c3c;
+        }
+        20% {
+          border-color: #2ecc71;
+        }
+        30% {
+          border-color: #f39c12;
+        }
+        40% {
+          border-color: #9b59b6;
+        }
+        50% {
+          border-color: #3498db;
+        }
+        60% {
+          border-color: #1abc9c;
+        }
+        70% {
+          border-color: #e67e22;
+        }
+        80% {
+          border-color: #34495e;
+        }
+        90% {
+          border-color: #d35400;
+        }
+        100% {
+          border-color: #3498db;
+        }
+      }
+
+      a {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 300px;
+        height: 40px;
+        background-color: #3498db;
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 50%;
+        transition: background-color 0.3s ease, color 0.3s ease,
+          transform 0.3s ease;
+        transform-origin: 50% 100%;
+        margin: 10px;
+      }
+      a:hover {
+        background-color: #2980b9;
+        color: #ecf0f1;
+        transform: scale(1.1);
+        box-shadow: 0 10px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      a.bounce-bg {
+        animation: bounceBg 10s infinite;
+        background-color: #cf8080;
+        color: #34495e;
+      }
+
+      @keyframes bounceBg {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-30px);
+        }
+        60% {
+          transform: translateY(-15px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Here are links for my projects</h1>
+    <div class="center-circle">
+      <a href="https://codepen.io/nejib-rehmi/pen/eYxQERd" class="bounce-bg"
+        >Build a Random Quote Machine
+      </a>
+
+      <a href="https://codepen.io/nejib-rehmi/pen/GRzwvwL"
+        >Build a Markdown Previewer</a
+      >
+      <a href="https://codepen.io/nejib-rehmi/pen/QWYoOZO">
+        Build a Drum Machine</a
+      >
+      <a href="https://codepen.io/nejib-rehmi/pen/jOdJaRZ">
+        Build a JavaScript Calculator</a
+      >
+      <a href="https://codepen.io/nejib-rehmi/pen/gOqEvoq"
+        >Build a 25 + 5 Clock</a
+      >
+    </div>
+
+    <script>
+      // JavaScript to apply the bounce effect sequentially
+      document.addEventListener("DOMContentLoaded", function () {
+        const links = document.querySelectorAll(".center-circle a");
+
+        function bounceLinks(index) {
+          if (index < links.length) {
+            // Apply bounce to the current link
+            links[index].classList.add("bounce-bg");
+
+            // Remove bounce after 10 seconds
+            setTimeout(() => {
+              links[index].classList.remove("bounce-bg");
+
+              // Apply color background to the next link
+              if (index + 1 < links.length) {
+                links[index + 1].classList.add("bounce-bg");
+              }
+
+              // Continue to the next link
+              bounceLinks(index + 1);
+            }, 10000);
+          }
+        }
+
+        // Start the animation with the first link
+        bounceLinks(0);
+      });
+    </script>
+  </body>
+</html>
